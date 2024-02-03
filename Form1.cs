@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -18,8 +19,11 @@ namespace geographical_information_system
     public partial class Form1 : Form
     {
 
+
          GMapOverlay layer1;
         List<Car> List;
+        SqlConnection connect = new SqlConnection(@"Data Source=DESKTOP-HP2NA5H\SQLEXPRESS;Initial Catalog=TrackingSystem;Integrated Security=True");
+
 
 
         public Form1()
@@ -35,12 +39,48 @@ namespace geographical_information_system
         private void MakeCarList()
         {
             List = new List<Car>();
-            List.Add(new Car("34 AC 01", "Tir", "Bursa", "Istanbul", new PointLatLng(40.16, 28.5)));
-            List.Add(new Car("06 GS 197", "Kamyon", "Ankara", "Istanbul", new PointLatLng(39.5, 32.55)));
-            List.Add(new Car("41 FB 882", "Ticari", "Ankara", "Kocaeli", new PointLatLng(39.56, 32.60)));
-            List.Add(new Car("35 TS 185", "Ticari", "Eskisehir", "Izmir", new PointLatLng(39.75, 30.54)));
-            List.Add(new Car("42 BJK 016", "Tir", "Konya", "Istanbul", new PointLatLng(37.88, 32.60)));
+            // Veritabanından ADO.NET ile bilgilerin cekilmesi
+            try { 
 
+                connect.Open();
+                string sqltext = " SELECT Plaka, Cartype, Nereden, Nereye, Enlem, Boylam FROM Araclar";
+                SqlDataAdapter da = new SqlDataAdapter(sqltext, connect);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                if(dt.Rows.Count > 0 )
+                {
+                    dataGridView1.DataSource = dt;
+                }
+
+                for (int i=0; i<dt.Rows.Count; i++)
+                {
+                    List.Add(new Car(dt.Rows[i][0].ToString(),
+                                     dt.Rows[i][1].ToString(),
+                                     dt.Rows[i][2].ToString(),
+                                     dt.Rows[i][3].ToString(),
+                                     new PointLatLng(Convert.ToDouble(dt.Rows[i][4].ToString()),
+                                     Convert.ToDouble(dt.Rows[i][5].ToString()))));
+
+
+
+                }
+
+
+
+            }
+            catch(Exception ex) {
+
+                MessageBox.Show("database error, ERROR: 4001\n" + 
+                    ex.Message);
+            
+            }
+            finally { 
+                if (connect != null) {
+                    connect.Close();
+                }
+            
+
+            }
         }
 
         private void InitializeMap()
@@ -71,31 +111,7 @@ namespace geographical_information_system
             Application.Exit();
         }
 
-        private void btnshow1_Click(object sender, EventArgs e)
-        {
-            PointLatLng location1 = new PointLatLng(Convert.ToDouble(txtlati.Text),
-                                                                        Convert.ToDouble(txtlong.Text));
-            GMarkerGoogle marker = new GMarkerGoogle(location1, GMarkerGoogleType.red_dot); //red_dot marker cinslerini beltir
-            marker.ToolTipText = "\nLocation 1\nCar\nFrom: Ankara\nTo  Istanbul\n ";
-            marker.ToolTip.Fill = Brushes.Black; //araç ipucu (tooltip) görünümünün arka planını siyah renge ayarlıyor
-            marker.ToolTip.Foreground = Brushes.White; // siyah zemın uzerıne beyaz yazı yazmasını saglar
-            marker.ToolTip.Stroke = Pens.Purple; //araç ipucu (tooltip) kenar çizgisinin rengini siyah olarak ayarlar
-            marker.ToolTip.TextPadding = new Size(5, 5); // siyah ekranın boyutunu ayarlar
-            marker.ToolTipMode = MarkerTooltipMode.OnMouseOver; // Mouse'i konuma getirince konum bilgisi gösterir--- .Always yaparsak her zaman gösterir
-
-            marker.Tag = 101;
-
-            
-
-            
-            
-            // daha sonra marker(ları) eklemeliyiz
-            //dikkat!!
-            // markerlerı once eklersek yanlıs yere koyabılır
-            layer1.Markers.Add(marker);
-            
-
-        }
+      
 
         private void Map_OnMarkerClick(GMapMarker item, MouseEventArgs e)
         {
@@ -114,17 +130,9 @@ namespace geographical_information_system
                 }
             }
 
-        } 
-
-        private void btnshow2_Click(object sender, EventArgs e)
-        {
-            PointLatLng location2 = new PointLatLng(Convert.ToDouble(txtlati2.Text),
-                                                                      Convert.ToDouble(txtlong2.Text));
-
-            GMarkerGoogle marker2 = new GMarkerGoogle(location2, GMarkerGoogleType.blue_dot);
-            marker2.Tag = 102;
-            layer1.Markers.Add(marker2);
         }
+
+
 
         private void btnaddmap_Click(object sender, EventArgs e)
         {
@@ -135,6 +143,13 @@ namespace geographical_information_system
                 markertemp.ToolTipText = car.ToString();
                 layer1.Markers.Add(markertemp);
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            // TODO: Bu kod satırı 'trackingSystemDataSet.Araclar' tablosuna veri yükler. Bunu gerektiği şekilde taşıyabilir, veya kaldırabilirsiniz.
+            this.araclarTableAdapter.Fill(this.trackingSystemDataSet.Araclar);
+
         }
     }
 }

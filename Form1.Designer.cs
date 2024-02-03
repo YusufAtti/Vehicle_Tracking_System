@@ -28,21 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.Map = new GMap.NET.WindowsForms.GMapControl();
-            this.txtlati = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtlong = new System.Windows.Forms.TextBox();
-            this.btnshow1 = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.btnshow2 = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtlong2 = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtlati2 = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.btnaddmap = new System.Windows.Forms.Button();
             this.txtlicense = new System.Windows.Forms.TextBox();
             this.txttype = new System.Windows.Forms.TextBox();
@@ -52,6 +39,19 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.trackingSystemDataSet = new geographical_information_system.TrackingSystemDataSet();
+            this.araclarBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.araclarTableAdapter = new geographical_information_system.TrackingSystemDataSetTableAdapters.AraclarTableAdapter();
+            this.plakaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.aractipiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.neredenDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nereyeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.enlemDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.boylamDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackingSystemDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.araclarBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // Map
@@ -62,7 +62,7 @@
             this.Map.GrayScaleMode = false;
             this.Map.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
             this.Map.LevelsKeepInMemory = 5;
-            this.Map.Location = new System.Drawing.Point(26, 33);
+            this.Map.Location = new System.Drawing.Point(26, 12);
             this.Map.MarkersEnabled = true;
             this.Map.MaxZoom = 2;
             this.Map.MinZoom = 2;
@@ -76,147 +76,14 @@
             this.Map.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
             this.Map.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
             this.Map.ShowTileGridLines = false;
-            this.Map.Size = new System.Drawing.Size(811, 578);
+            this.Map.Size = new System.Drawing.Size(1091, 538);
             this.Map.TabIndex = 0;
             this.Map.Zoom = 0D;
             this.Map.OnMarkerClick += new GMap.NET.WindowsForms.MarkerClick(this.Map_OnMarkerClick);
             // 
-            // txtlati
-            // 
-            this.txtlati.Location = new System.Drawing.Point(959, 105);
-            this.txtlati.Name = "txtlati";
-            this.txtlati.Size = new System.Drawing.Size(89, 22);
-            this.txtlati.TabIndex = 1;
-            this.txtlati.Text = "39,5";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(859, 103);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 22);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Latitude:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F);
-            this.label2.Location = new System.Drawing.Point(859, 139);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(94, 22);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Longitude:";
-            // 
-            // txtlong
-            // 
-            this.txtlong.Location = new System.Drawing.Point(959, 141);
-            this.txtlong.Name = "txtlong";
-            this.txtlong.Size = new System.Drawing.Size(89, 22);
-            this.txtlong.TabIndex = 3;
-            this.txtlong.Text = "32,5";
-            // 
-            // btnshow1
-            // 
-            this.btnshow1.Location = new System.Drawing.Point(942, 182);
-            this.btnshow1.Name = "btnshow1";
-            this.btnshow1.Size = new System.Drawing.Size(130, 28);
-            this.btnshow1.TabIndex = 5;
-            this.btnshow1.Text = "SHOW";
-            this.btnshow1.UseVisualStyleBackColor = true;
-            this.btnshow1.Click += new System.EventHandler(this.btnshow1_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(1004, 33);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(187, 16);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "use \",\" when entering the value";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Red;
-            this.label4.Location = new System.Drawing.Point(1050, 9);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(79, 22);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "IMPORT";
-            // 
-            // btnshow2
-            // 
-            this.btnshow2.Location = new System.Drawing.Point(1174, 182);
-            this.btnshow2.Name = "btnshow2";
-            this.btnshow2.Size = new System.Drawing.Size(130, 28);
-            this.btnshow2.TabIndex = 12;
-            this.btnshow2.Text = "SHOW";
-            this.btnshow2.UseVisualStyleBackColor = true;
-            this.btnshow2.Click += new System.EventHandler(this.btnshow2_Click);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F);
-            this.label5.Location = new System.Drawing.Point(1091, 139);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(104, 22);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "Longitude2:";
-            // 
-            // txtlong2
-            // 
-            this.txtlong2.Location = new System.Drawing.Point(1200, 141);
-            this.txtlong2.Name = "txtlong2";
-            this.txtlong2.Size = new System.Drawing.Size(89, 22);
-            this.txtlong2.TabIndex = 10;
-            this.txtlong2.Text = "32,5";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(1091, 103);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(89, 22);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "Latitude2:";
-            // 
-            // txtlati2
-            // 
-            this.txtlati2.Location = new System.Drawing.Point(1200, 105);
-            this.txtlati2.Name = "txtlati2";
-            this.txtlati2.Size = new System.Drawing.Size(89, 22);
-            this.txtlati2.TabIndex = 8;
-            this.txtlati2.Text = "39,5";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(843, 87);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(59, 16);
-            this.label7.TabIndex = 13;
-            this.label7.Text = "Marker1:";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(1072, 87);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(59, 16);
-            this.label8.TabIndex = 14;
-            this.label8.Text = "Marker2:";
-            // 
             // btnaddmap
             // 
-            this.btnaddmap.Location = new System.Drawing.Point(985, 241);
+            this.btnaddmap.Location = new System.Drawing.Point(887, 573);
             this.btnaddmap.Name = "btnaddmap";
             this.btnaddmap.Size = new System.Drawing.Size(230, 59);
             this.btnaddmap.TabIndex = 15;
@@ -227,7 +94,7 @@
             // txtlicense
             // 
             this.txtlicense.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtlicense.Location = new System.Drawing.Point(1075, 360);
+            this.txtlicense.Location = new System.Drawing.Point(985, 652);
             this.txtlicense.Name = "txtlicense";
             this.txtlicense.Size = new System.Drawing.Size(132, 28);
             this.txtlicense.TabIndex = 16;
@@ -236,7 +103,7 @@
             // txttype
             // 
             this.txttype.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txttype.Location = new System.Drawing.Point(1075, 388);
+            this.txttype.Location = new System.Drawing.Point(985, 680);
             this.txttype.Name = "txttype";
             this.txttype.Size = new System.Drawing.Size(132, 28);
             this.txttype.TabIndex = 17;
@@ -245,7 +112,7 @@
             // txtTo
             // 
             this.txtTo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTo.Location = new System.Drawing.Point(1075, 444);
+            this.txtTo.Location = new System.Drawing.Point(985, 736);
             this.txtTo.Name = "txtTo";
             this.txtTo.Size = new System.Drawing.Size(132, 28);
             this.txtTo.TabIndex = 19;
@@ -254,7 +121,7 @@
             // txtfrom
             // 
             this.txtfrom.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtfrom.Location = new System.Drawing.Point(1075, 416);
+            this.txtfrom.Location = new System.Drawing.Point(985, 708);
             this.txtfrom.Name = "txtfrom";
             this.txtfrom.Size = new System.Drawing.Size(132, 28);
             this.txtfrom.TabIndex = 18;
@@ -264,7 +131,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(943, 360);
+            this.label9.Location = new System.Drawing.Point(853, 652);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(126, 22);
             this.label9.TabIndex = 20;
@@ -274,7 +141,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(981, 388);
+            this.label10.Location = new System.Drawing.Point(891, 680);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(88, 22);
             this.label10.TabIndex = 21;
@@ -284,7 +151,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(1032, 442);
+            this.label11.Location = new System.Drawing.Point(942, 734);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(37, 22);
             this.label11.TabIndex = 23;
@@ -294,18 +161,95 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(1008, 414);
+            this.label12.Location = new System.Drawing.Point(918, 706);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(61, 22);
             this.label12.TabIndex = 22;
             this.label12.Text = "From: ";
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.plakaDataGridViewTextBoxColumn,
+            this.aractipiDataGridViewTextBoxColumn,
+            this.neredenDataGridViewTextBoxColumn,
+            this.nereyeDataGridViewTextBoxColumn,
+            this.enlemDataGridViewTextBoxColumn,
+            this.boylamDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.araclarBindingSource;
+            this.dataGridView1.Location = new System.Drawing.Point(26, 556);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.Size = new System.Drawing.Size(805, 243);
+            this.dataGridView1.TabIndex = 24;
+            // 
+            // trackingSystemDataSet
+            // 
+            this.trackingSystemDataSet.DataSetName = "TrackingSystemDataSet";
+            this.trackingSystemDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // araclarBindingSource
+            // 
+            this.araclarBindingSource.DataMember = "Araclar";
+            this.araclarBindingSource.DataSource = this.trackingSystemDataSet;
+            // 
+            // araclarTableAdapter
+            // 
+            this.araclarTableAdapter.ClearBeforeFill = true;
+            // 
+            // plakaDataGridViewTextBoxColumn
+            // 
+            this.plakaDataGridViewTextBoxColumn.DataPropertyName = "Plaka";
+            this.plakaDataGridViewTextBoxColumn.HeaderText = "Plaka";
+            this.plakaDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.plakaDataGridViewTextBoxColumn.Name = "plakaDataGridViewTextBoxColumn";
+            // 
+            // aractipiDataGridViewTextBoxColumn
+            // 
+            this.aractipiDataGridViewTextBoxColumn.DataPropertyName = "Aractipi";
+            this.aractipiDataGridViewTextBoxColumn.HeaderText = "Aractipi";
+            this.aractipiDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.aractipiDataGridViewTextBoxColumn.Name = "aractipiDataGridViewTextBoxColumn";
+            // 
+            // neredenDataGridViewTextBoxColumn
+            // 
+            this.neredenDataGridViewTextBoxColumn.DataPropertyName = "Nereden";
+            this.neredenDataGridViewTextBoxColumn.HeaderText = "Nereden";
+            this.neredenDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.neredenDataGridViewTextBoxColumn.Name = "neredenDataGridViewTextBoxColumn";
+            // 
+            // nereyeDataGridViewTextBoxColumn
+            // 
+            this.nereyeDataGridViewTextBoxColumn.DataPropertyName = "Nereye";
+            this.nereyeDataGridViewTextBoxColumn.HeaderText = "Nereye";
+            this.nereyeDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.nereyeDataGridViewTextBoxColumn.Name = "nereyeDataGridViewTextBoxColumn";
+            // 
+            // enlemDataGridViewTextBoxColumn
+            // 
+            this.enlemDataGridViewTextBoxColumn.DataPropertyName = "Enlem";
+            this.enlemDataGridViewTextBoxColumn.HeaderText = "Enlem";
+            this.enlemDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.enlemDataGridViewTextBoxColumn.Name = "enlemDataGridViewTextBoxColumn";
+            // 
+            // boylamDataGridViewTextBoxColumn
+            // 
+            this.boylamDataGridViewTextBoxColumn.DataPropertyName = "Boylam";
+            this.boylamDataGridViewTextBoxColumn.HeaderText = "Boylam";
+            this.boylamDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.boylamDataGridViewTextBoxColumn.Name = "boylamDataGridViewTextBoxColumn";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1316, 639);
+            this.BackColor = System.Drawing.Color.MediumSpringGreen;
+            this.ClientSize = new System.Drawing.Size(1130, 811);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label10);
@@ -315,24 +259,14 @@
             this.Controls.Add(this.txttype);
             this.Controls.Add(this.txtlicense);
             this.Controls.Add(this.btnaddmap);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.btnshow2);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.txtlong2);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.txtlati2);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.btnshow1);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtlong);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtlati);
             this.Controls.Add(this.Map);
             this.Name = "Form1";
             this.Text = "Form1";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
+            this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackingSystemDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.araclarBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -341,20 +275,6 @@
         #endregion
 
         private GMap.NET.WindowsForms.GMapControl Map;
-        private System.Windows.Forms.TextBox txtlati;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtlong;
-        private System.Windows.Forms.Button btnshow1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button btnshow2;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtlong2;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtlati2;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnaddmap;
         private System.Windows.Forms.TextBox txtlicense;
         private System.Windows.Forms.TextBox txttype;
@@ -364,6 +284,16 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private TrackingSystemDataSet trackingSystemDataSet;
+        private System.Windows.Forms.BindingSource araclarBindingSource;
+        private TrackingSystemDataSetTableAdapters.AraclarTableAdapter araclarTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn plakaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn aractipiDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn neredenDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nereyeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn enlemDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn boylamDataGridViewTextBoxColumn;
     }
 }
 
